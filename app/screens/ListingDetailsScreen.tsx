@@ -12,7 +12,12 @@ export default function ListingDetailsScreen() {
             <View style={styles.itemInfo}>
                 <AppText style={styles.titleText}>{'Red jacket for sale'}</AppText>
                 <AppText style={styles.subTitleText}>{'$100'}</AppText>
-                <ListItem title={'Neak Davies'} subTitle={'69 Listings'} image={require('../assets/mosh.jpg')}/>
+                <ListItem 
+                    title={'Neak Davies'} 
+                    subTitle={'69 Listings'} 
+                    image={require('../assets/mosh.jpg')} 
+                    onPress={() => console.log('odncod')}
+                />
             </View>
         </View>
     );
