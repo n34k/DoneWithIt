@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     card: {
         backgroundColor: colors.white,
         width: '100%',
-        height: 200,
+        height: 250,
         borderRadius: 20,
         overflow: 'hidden',
         marginBottom: 20,
@@ -31,8 +31,10 @@ const styles = StyleSheet.create({
         height: '70%',
     },
     textBox: {
+        justifyContent: 'center',
         paddingLeft: 20,
         paddingTop: 10
+
     },
     subTitleText: {
         color: colors.gray

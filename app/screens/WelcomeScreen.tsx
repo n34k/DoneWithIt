@@ -10,7 +10,7 @@ export default function WelcomeScreen() {
         <ImageBackground blurRadius={10} source={require('../assets/background.jpg')} style={styles.backgroundContainer}>
             <View style={styles.logoBox}>
                 <Image source={require('../assets/logo-red.png')} style={styles.logoImg}/>
-                <AppText textColor={colors.black}>Sell What You Don't Need</AppText>
+                <AppText>Sell What You Don't Need</AppText>
             </View>
             <BigButton 
               title='Login'

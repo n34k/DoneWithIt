@@ -7,6 +7,21 @@ export interface Listing {
     image: ImageSourcePropType;
 }
 
+export interface ListingEditFormValues {
+    title: string;
+    price: number;
+    category: string;
+    description?: string;
+}
+
+export interface RegisterFormValues {
+    name: string
+    email: string;
+    password: string;
+}
+
+export interface LoginFormValues extends RegisterFormValues {}
+
 export interface Message {
     id: number;
     title: string;

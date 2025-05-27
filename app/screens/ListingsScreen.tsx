@@ -3,6 +3,7 @@ import { StyleSheet, SafeAreaView, View, FlatList } from 'react-native';
 
 import Card from '../components/Card';
 import { Listing } from '../types/dataTypes';
+import colors from '../config/colors';
 
 const initialListings:Listing[] = [
     {
@@ -25,7 +26,7 @@ export default function ListingsScreen({}) {
     
     return (
         <SafeAreaView style={styles.screen}>
-            <FlatList
+            <FlatList style={styles.cardsContainer}
                 data={listings}
                 keyExtractor={listing => listing.id.toString()}
                 renderItem={({ item }) => (
@@ -43,6 +44,10 @@ export default function ListingsScreen({}) {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: colors.light
+    },
+    cardsContainer: {
+        width: '90%'
     }
 })

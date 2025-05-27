@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { SafeAreaView, FlatList, StyleSheet, View } from 'react-native';
 
-import ListItem from '../components/ListItem';
-import ListItemSeperator from '../components/ListItemSeperator';
-import ListItemDeleteAction from '../components/ListItemDeleteAction';
+import ListItem from '../components/lists/ListItem';
+import ListItemSeperator from '../components/lists/ListItemSeperator';
+import ListItemDeleteAction from '../components/lists/ListItemDeleteAction';
 import { Message } from '../types/dataTypes';
 
 const initialMessages:Message[] = [

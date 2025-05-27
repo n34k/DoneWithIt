@@ -2,25 +2,27 @@ import React from 'react';
 import { View, Image, StyleSheet, TouchableHighlight } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 
-import AppText from './AppText';
-import colors from '../config/colors';
-import { ListItemProps } from '../types/propTypes';
+import AppText from '../AppText';
+import colors from '../../config/colors';
+import { ListItemProps } from '../../types/propTypes';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-export default function ListItem({ image, title, subTitle, onPress, renderRightActions }: ListItemProps) {
+export default function ListItem({ image, IconComponent, title, subTitle, onPress, renderRightActions }: ListItemProps) {
     return (
-        <GestureHandlerRootView>
+        <GestureHandlerRootView style={{flex:0}}>
             <Swipeable renderRightActions={renderRightActions}>
                 <TouchableHighlight 
                     onPress={onPress}
                     underlayColor={colors.light}>
                     <View style={styles.listItem}>
                         <View style={styles.profilePic}>
-                            <Image style={styles.profileImg} source={image}/>
+                            {IconComponent ? IconComponent : (
+                                image && <Image style={styles.profileImg} source={image} />
+                            )}
                         </View>
                         <View style={styles.itemInfo}>
                             <AppText style={styles.titleText}>{title}</AppText>
-                            <AppText style={styles.subTitleText}>{subTitle}</AppText>
+                            {subTitle && <AppText style={styles.subTitleText}>{subTitle}</AppText>}
                         </View>
                     </View>
                 </TouchableHighlight>
@@ -31,12 +33,14 @@ export default function ListItem({ image, title, subTitle, onPress, renderRightA
 
 const styles = StyleSheet.create({
     listItem: {
+        backgroundColor: colors.white,
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 20
+        padding: 20,
     },
     itemInfo: {
-        paddingLeft: 20
+        justifyContent: 'center',
+        marginLeft: 10
     },
     profileImg: {
         height: '100%',
@@ -44,14 +48,11 @@ const styles = StyleSheet.create({
     },
     profilePic: {
         overflow: 'hidden',
+        alignItems: 'center',
+        justifyContent: 'center',
         borderRadius: 25,
         height: 50,
         width: 50
-    },
-    sellerInfo: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        padding: 20
     },
     subTitleText: {
         color: colors.gray,
