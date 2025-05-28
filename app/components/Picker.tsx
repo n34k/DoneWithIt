@@ -8,12 +8,12 @@ import defaultStyles from '../config/styles'
 import AppText from './AppText';
 import PickerItem from './PickerItem';
 
-export default function Picker({ selectedItem, onSelectItem, icon, items, placeholder }:PickerProps) {
+export default function Picker({ selectedItem, onSelectItem, icon, items, placeholder, width }:PickerProps) {
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <>
             <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-                <View style={styles.conatiner}>
+                <View style={[styles.conatiner, {width}]}>
                     {(icon && 
                         <MaterialCommunityIcons 
                             name={icon} 
@@ -30,15 +30,21 @@ export default function Picker({ selectedItem, onSelectItem, icon, items, placeh
                     />
                 </View>
             </TouchableWithoutFeedback>
+            <View style={styles.modalContainer}>
+
             <Modal visible={modalVisible} animationType='slide'>
                 <SafeAreaView>
                     <Button title='Close' onPress={() => setModalVisible(false)}/>
-                    <FlatList
+                    <FlatList 
                         data={items}
                         keyExtractor={item => item.value.toString()}
+                        numColumns={3}
+                        contentContainerStyle={styles.flatListContent}
                         renderItem={({ item }) => 
                             <PickerItem
-                                label={item.label} 
+                                label={item.label}
+                                icon={item.icon}
+                                color={item.color} 
                                 onPress={() => {
                                     setModalVisible(false);
                                     onSelectItem(item)
@@ -47,6 +53,7 @@ export default function Picker({ selectedItem, onSelectItem, icon, items, placeh
                     />
                 </SafeAreaView>
             </Modal>
+            </View>
         </>
     );
 }
@@ -59,6 +66,9 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 15,
         marginVertical: 10
+    },
+    flatListContent: {
+        alignItems: 'center', // centers rows when there's extra space
     },
     grayText: {
         flex: 1,

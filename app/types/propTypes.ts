@@ -1,6 +1,6 @@
 import { ReactNode  } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { ImageSourcePropType, TextStyle, TextInputProps  } from 'react-native';
+import { ImageSourcePropType, TextStyle, TextInputProps, TextProps  } from 'react-native';
 import { SharedValue } from 'react-native-reanimated';
 import { RegisterFormValues } from './dataTypes';
 
@@ -13,15 +13,17 @@ export interface AppFormProps {
 
 export interface AppFormFieldProps extends AppTextInputProps {
   name: keyof RegisterFormValues;
+  width?: number;
 }
 
-export interface AppTextProps {
+export interface AppTextProps extends TextProps {
   children: ReactNode;
   style?: TextStyle | TextStyle[];
 }
 
 export interface AppTextInputProps extends TextInputProps {
   icon?: keyof typeof MaterialCommunityIcons.glyphMap;
+  width?: number | string;
 }
 
 export interface BigButtonProps {
@@ -50,6 +52,7 @@ export interface IconProps {
 
 export interface ListItemProps extends CardProps {
   IconComponent?: ReactNode;
+  showChevron: boolean
   onPress: () => void;
   renderRightActions?: (
   progress: SharedValue<number>,
@@ -64,6 +67,7 @@ export interface ListItemDeleteActionProps {
 
 export interface PickerProps {
   icon?: keyof typeof MaterialCommunityIcons.glyphMap;
+  width?: any
   items: any;
   placeholder: string;
   selectedItem: any;

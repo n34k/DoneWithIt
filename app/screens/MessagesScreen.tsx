@@ -35,7 +35,8 @@ export default function MessagesScreen({}) {
                 data={messages}
                 keyExtractor={message => message.id.toString()}
                 renderItem={({ item }) => (
-                    <ListItem 
+                    <ListItem
+                        showChevron={true} 
                         title={item.title} 
                         subTitle={item.description}
                         image={item.image}

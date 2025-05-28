@@ -6,9 +6,9 @@ import colors from '../config/colors';
 import { AppTextInputProps } from '../types/propTypes';
 import defaultStyles from '../config/styles'
 
-export default function AppTextInput({ icon, ...otherProps }:AppTextInputProps) {
+export default function AppTextInput({ icon, width = '100%', ...otherProps }:AppTextInputProps) {
     return (
-        <View style={styles.conatiner}>
+        <View style={[styles.conatiner, {width}]}>
             {icon && <MaterialCommunityIcons 
                         name={icon} 
                         size={20} 
@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
         backgroundColor: defaultStyles.colors.light,
         borderRadius: 25,
         flexDirection: 'row',
-        width: '100%',
         padding: 15,
         marginVertical: 10
     },

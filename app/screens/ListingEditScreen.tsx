@@ -16,14 +16,19 @@ const validationSchema = Yup.object().shape({
 });
 
 const categories = [
-    { label: "Furniture", value: 1 },
-    { label: "Clothing", value: 2 },
-    { label: "Camera", value: 3},
+    { label: "Furniture", icon: "floor-lamp", color: "#fc5c65", value: 1 },
+    { label: "Clothing", icon: "car", color: "#fd9644",  value: 2 },
+    { label: "Camera", icon: "camera", color: "#fed330",  value: 3},
+    { label: "Games", icon: "cards",  color: "#26de81", value: 4},
+    { label: "Clothing", icon: "shoe-heel",  color: "#2bcbba", value: 5},
+    { label: "Sports", icon: "basketball",  color: "#45aaf2", value: 6},
+    { label: "Movies & Music", icon: "headphones",  color: "#4b7bec", value: 7},
+    { label: "Books", icon: "book", color: "purple", value: 8}
 ]
 
 export default function ListingEditScreen({}) {
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.screen}>
             <AppForm
                 initialValues={{ title: '', price: '', category: null, description: ''}}
                 onSubmit={(values) => console.log(values)}
@@ -38,12 +43,14 @@ export default function ListingEditScreen({}) {
                 />
                 <AppFormField
                     name='price'
+                    width={150}
                     icon='currency-usd'
                     keyboardType='decimal-pad'
                     placeholder='Price'
                 />
                 <AppFormPicker
                     items={categories}
+                    width={225}
                     name="category"
                     placeholder="Category"
                 />
@@ -61,5 +68,7 @@ export default function ListingEditScreen({}) {
 }
 
 const styles = StyleSheet.create({
-    
+    screen: {
+        margin: 7.5
+    }
 })

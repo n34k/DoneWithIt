@@ -6,7 +6,7 @@ import ErrorMessage from './ErrorMessage';
 import { AppFormFieldProps } from '../../types/propTypes';
 import { LoginFormValues } from '../../types/dataTypes';
 
-export default function AppFormField({ name, ...otherProps }: AppFormFieldProps) {
+export default function AppFormField({ name, width, ...otherProps }: AppFormFieldProps) {
     const { setFieldTouched, handleChange, errors, touched } = useFormikContext<LoginFormValues>()
 
     return (
@@ -15,6 +15,7 @@ export default function AppFormField({ name, ...otherProps }: AppFormFieldProps)
                 onBlur={() => setFieldTouched(name)}
                 onChangeText={handleChange(name)}
                 {...otherProps}
+                width={width}
             />
             <ErrorMessage error={errors[name]} visible={touched[name]}/>
         </>
